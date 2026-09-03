@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>长沙慢住 · 中秋国庆</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@360;450;560&family=Noto+Serif+SC:wght@500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --paper: #f3eadc;
+    --paper-deep: #e9dcc8;
+    --card: #fffaf1;
+    --ink: #3b322a;
+    --muted: #8a7c6e;
+    --line: #e4d5c3;
+    --persimmon: #c45c3e;
+    --leaf: #6f8b6a;
+    --water: #8aa3a6;
+    --rest: #d9c7a8;
+    --shadow: 0 18px 50px rgba(80, 55, 30, 0.07);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: "Noto Sans SC", "PingFang SC", "Hiragino Sans GB", sans-serif;
+    color: var(--ink);
+    background:
+      radial-gradient(1200px 600px at 10% -10%, #f7f1e6 0%, transparent 50%),
+      radial-gradient(900px 500px at 110% 8%, #ead9c4 0%, transparent 46%),
+      var(--paper);
+    line-height: 1.75;
+    font-weight: 360;
+    letter-spacing: 0.02em;
+  }
+  .wrap { width: min(760px, calc(100% - 40px)); margin: 0 auto; padding-bottom: 96px; }
+  header.hero {
+    padding: 72px 0 48px;
+    text-align: left;
+  }
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--persimmon);
+    font-size: 13px;
+    letter-spacing: 0.28em;
+    text-transform: none;
+  }
+  .eyebrow:before {
+    content: "";
+    width: 28px; height: 1px;
+    background: var(--persimmon);
+    opacity: 0.7;
+  }
+  h1 {
+    font-family: "Noto Serif SC", serif;
+    font-weight: 700;
+    font-size: clamp(42px, 8vw, 68px);
+    line-height: 1.12;
+    margin: 18px 0 14px;
+    letter-spacing: 0.08em;
+  }
+  .lede {
+    font-size: 17px;
+    color: var(--muted);
+    max-width: 34em;
+    margin: 0;
+  }
+  .river {
+    margin: 36px 0 8px;
+    height: 64px;
+    overflow: hidden;
+  }
+  .chip-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 28px;
+  }
+  .chip {
+    border: 1px solid var(--line);
+    background: rgba(255,250,241,0.7);
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .note {
+    background: var(--card);
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow);
+    border-radius: 22px;
+    padding: 28px 28px 24px;
+    margin: 28px 0 48px;
+  }
+  .note h2, section h2 {
+    font-family: "Noto Serif SC", serif;
+    font-weight: 600;
+    font-size: 22px;
+    margin: 0 0 10px;
+    letter-spacing: 0.06em;
+  }
+  .note p { margin: 0; color: var(--ink); }
+  .quiet { color: var(--muted); font-size: 14px; margin-top: 10px !important; }
+  .map {
+    display: grid;
+    grid-template-columns: 72px 1fr;
+    gap: 10px 16px;
+    margin-top: 18px;
+    font-size: 15px;
+  }
+  .map b {
+    font-weight: 560;
+    color: var(--leaf);
+  }
+  .days { position: relative; padding-left: 28px; }
+  .days:before {
+    content: "";
+    position: absolute;
+    left: 7px; top: 12px; bottom: 12px;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--water), var(--line) 40%, transparent);
+  }
+  article.day {
+    position: relative;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 22px 24px 20px;
+    margin: 0 0 16px;
+    box-shadow: var(--shadow);
+  }
+  article.day.rest {
+    background: #f4ecde;
+    box-shadow: none;
+  }
+  article.day:before {
+    content: "";
+    position: absolute;
+    left: -25px; top: 28px;
+    width: 9px; height: 9px;
+    border-radius: 50%;
+    background: var(--water);
+    box-shadow: 0 0 0 4px var(--paper);
+  }
+  article.day.rest:before { background: var(--rest); }
+  .when {
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    color: var(--muted);
+  }
+  .when span {
+    color: var(--persimmon);
+    margin-left: 8px;
+    letter-spacing: 0.08em;
+  }
+  article.day h3 {
+    font-family: "Noto Serif SC", serif;
+    font-size: 22px;
+    font-weight: 600;
+    margin: 6px 0 8px;
+    letter-spacing: 0.04em;
+  }
+  article.day p { margin: 0 0 8px; }
+  article.day p:last-child { margin-bottom: 0; }
+  .soft-list {
+    margin: 8px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .soft-list li {
+    position: relative;
+    padding-left: 16px;
+    color: var(--muted);
+    font-size: 14.5px;
+    margin: 4px 0;
+  }
+  .soft-list li:before {
+    content: "";
+    position: absolute;
+    left: 0; top: 0.7em;
+    width: 6px; height: 1px;
+    background: var(--leaf);
+  }
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 16px;
+  }
+  @media (max-width: 640px) {
+    .wrap { width: calc(100% - 28px); }
+    header.hero { padding-top: 48px; }
+    .grid-2 { grid-template-columns: 1fr; }
+    .days { padding-left: 22px; }
+    article.day:before { left: -22px; }
+  }
+  .pack, .later {
+    margin-top: 48px;
+  }
+  .pack ul {
+    columns: 2;
+    gap: 24px;
+    margin: 12px 0 0;
+    padding: 0 0 0 18px;
+    color: var(--muted);
+    font-size: 14.5px;
+  }
+  @media (max-width: 640px) { .pack ul { columns: 1; } }
+  footer {
+    margin-top: 64px;
+    color: var(--muted);
+    font-size: 13px;
+    border-top: 1px solid var(--line);
+    padding-top: 22px;
+  }
+  a { color: var(--persimmon); text-decoration: none; border-bottom: 1px solid rgba(196,92,62,0.25); }
+  a:hover { border-bottom-color: var(--persimmon); }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="hero">
+      <div class="eyebrow">SHENZHEN → CHANGSHA</div>
+      <h1>长沙慢住</h1>
+      <p class="lede">中秋到国庆，带着两岁半和五岁，去青园路爷爷家住几天。不赶路，不打卡，上午出门，下午午睡，晚上在家里吃饭。</p>
+      <div class="chip-row">
+        <span class="chip">9 月 25 日去</span>
+        <span class="chip">10 月 3 日回</span>
+        <span class="chip">住青园路</span>
+        <span class="chip">高铁约 2 小时 40 分</span>
+      </div>
+      <svg class="river" viewBox="0 0 760 64" fill="none" aria-hidden="true">
+        <path d="M0 38 C 80 18, 140 54, 220 36 S 360 12, 440 34 S 600 58, 760 28" stroke="#c45c3e" stroke-opacity="0.35" stroke-width="1.4"/>
+        <path d="M0 46 C 90 28, 150 60, 240 42 S 390 20, 470 40 S 620 62, 760 36" stroke="#8aa3a6" stroke-opacity="0.45" stroke-width="1.2"/>
+      </svg>
+    </header>
+
+    <div class="note">
+      <h2>怎么过这几天</h2>
+      <p>假期其实有十三天，我们只用到十号前的前半段。每天只放一件事，十一点半前后往回走。人多或下雨，就改去德思勤，或者哪都不去。</p>
+      <p class="quiet">中秋当晚留在爷爷家团圆。清远、张家界、长隆，这次都不串。</p>
+    </div>
+
+    <section>
+      <h2>家在城南</h2>
+      <p class="quiet" style="margin-top:0">长沙南站下车站打车回家，推车不必倒公交。</p>
+      <div class="map">
+        <b>近</b><span>省植物园、德思勤、星城天地、圭塘河</span>
+        <b>不远</b><span>生态动物园，暮云，打车去</span>
+        <b>偶尔</b><span>橘子洲坐观光车，九十分钟内回来</span>
+        <b>不去</b><span>国庆当天不出城南。五一、太平街留到以后</span>
+      </div>
+    </section>
+
+    <section style="margin-top:56px">
+      <h2>九天，慢慢来</h2>
+      <p class="quiet" style="margin-top:0;margin-bottom:24px">不是行程表，比较像日记预告。哪天状态不好，整页划掉也没关系。</p>
+      <div class="days">
+
+        <article class="day">
+          <div class="when">09.25 周五 <span>到家</span></div>
+          <h3>上车，午睡，团圆饭</h3>
+          <p>上午高铁。到了长沙南打车去青园路。下午只洗澡、睡觉、补一点尿裤零食。晚上哪都别去。</p>
+          <ul class="soft-list">
+            <li>去程尽量对准 G6002，9:00 深圳北，11:40 长沙南</li>
+            <li>两个孩子都未满六岁，占座要买儿童票，四个座位一起买</li>
+            <li>深圳北预留四十分钟，推车走人工通道</li>
+          </ul>
+        </article>
+
+        <article class="day">
+          <div class="when">09.26 周六 <span>近处</span></div>
+          <h3>植物园走一截</h3>
+          <p>湖南省植物园就在城南。免费，公众号预约。园子很大，进北门看看花田，不走完全园。下午回家睡，醒了去德思勤吃饭。</p>
+          <ul class="soft-list">
+            <li>地址：雨花区植物园路 111 号，打车去北门</li>
+            <li>下雨就改德思勤，植物园留到以后</li>
+          </ul>
+        </article>
+
+        <article class="day">
+          <div class="when">09.27 周日 <span>中秋</span></div>
+          <h3>橘子洲，坐着看</h3>
+          <p>上岛坐观光车，看一眼江和塑像，吹吹风就回来。不走五公里的洲，不跟晚上的人潮。</p>
+          <ul class="soft-list">
+            <li>入园免费，要预约。9 月 24 日零点起约 27 日</li>
+            <li>环洲观光车约 40 元；1.2 米及以下儿童家长陪同免费</li>
+            <li>约不上，就去圭塘河边走走</li>
+          </ul>
+        </article>
+
+        <article class="day rest">
+          <div class="when">09.28 周一 <span>空白</span></div>
+          <h3>这一天什么都不排</h3>
+          <p>请假的第一天留给家里。想出门就去圭塘河或悠游小镇，不想出门就在爷爷家耗着。</p>
+        </article>
+
+        <article class="day">
+          <div class="when">09.29 周二 <span>看动物</span></div>
+          <h3>动物园，坐车看</h3>
+          <p>上午去生态动物园。先坐车行区看狮虎，再步行区看看熊猫和大象。三个小时够了。</p>
+          <ul class="soft-list">
+            <li>美团或公众号预约；成人买步行区加车行区</li>
+            <li>1.2 米以下儿童全区免票，带户口本</li>
+            <li>从青园路打车往返，不倒车</li>
+          </ul>
+        </article>
+
+        <article class="day rest">
+          <div class="when">09.30 周三 <span>弹性</span></div>
+          <h3>室内，或者补植物园</h3>
+          <p>德思勤、星城天地都可以。岳麓山可去可不去：去就坐索道，人多就回家，不是必须。</p>
+        </article>
+
+        <article class="day rest">
+          <div class="when">10.01 周四 <span>国庆</span></div>
+          <h3>留在城南</h3>
+          <p>这一天人最多。待在雨花，商场或家里。不去五一，不去文和友排队，不穿城去开福。</p>
+        </article>
+
+        <article class="day">
+          <div class="when">10.02 周五 <span>看情况</span></div>
+          <h3>海底世界，或再歇一天</h3>
+          <p>只有睡饱了、家里有人一起，才去开福区海底世界。否则重复德思勤或植物园，完全成立。</p>
+        </article>
+
+        <article class="day">
+          <div class="when">10.03 周六 <span>回家</span></div>
+          <h3>中午的车</h3>
+          <p>中午前收拾。长沙南提前四十分钟。坐中午前后的车，傍晚到深圳。后面几天在家缓一缓，八号上班。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="later">
+      <h2>出门前，轻轻记一笔</h2>
+      <div class="grid-2">
+        <div class="note" style="margin:0">
+          <h2>车票</h2>
+          <p>深圳北、深圳、深圳东 9:15 开售。9 月 11 日买 25 日去程，9 月 19 日买 3 日返程。没有就候补。福田站是下午两点。</p>
+          <p class="quiet">公开二等座大约 451.5，以 12306 为准。</p>
+        </div>
+        <div class="note" style="margin:0">
+          <h2>预约</h2>
+          <p>植物园公众号、橘子洲提前三天零点、动物园美团。时刻和儿童规则出发前两天再看一眼。</p>
+          <p class="quiet"><a href="https://www.gov.cn/zhengce/content/202511/content_7047090.htm">放假通知</a> · <a href="https://kyfw.12306.cn/otn/gonggao/children.html">儿童票说明</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="pack">
+      <h2>包里放什么</h2>
+      <ul>
+        <li>身份证、小孩户口本</li>
+        <li>推车和背带</li>
+        <li>尿裤、湿巾、零食水杯</li>
+        <li>车上薄外套</li>
+        <li>防晒帽、换洗衣</li>
+        <li>退热药，雨衣</li>
+      </ul>
+      <p class="quiet">九月底白天还可能三十度，按短袖加一件薄外套。</p>
+    </section>
+
+    <div class="note" style="margin-top:48px">
+      <h2>人多或下雨</h2>
+      <p>德思勤，星城天地，植物园温室，或者爷爷家。待在家里不是失败，是带两个小朋友的正确选项。</p>
+    </div>
+
+    <footer>
+      给从深圳来的一家四口。住青园路，9 月 25 日到 10 月 3 日。票和园方信息以当天 12306、美团、公众号为准。
+    </footer>
+  </div>
+</body>
+</html>
